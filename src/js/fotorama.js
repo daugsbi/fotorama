@@ -562,7 +562,10 @@ jQuery.Fotorama = function ($fotorama, opts) {
       frameData.state = '';
       img.src = src;
       if (dataFrame.srcset) {
-        img.srcset = dataFrame.srcset;
+        // use srcset only if it is not in full screen mode
+        if(dataFrame.full && img.src.indexOf(dataFrame.full) === -1){
+          img.srcset = dataFrame.srcset;
+        }
       }
     });
   }
